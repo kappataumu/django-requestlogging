@@ -87,7 +87,10 @@ class RequestFilter(object):
         # User
         user = getattr(request, 'user', None)
         if user and not user.is_anonymous():
-            record.username = user.username
+            if hasattr(user, 'username'):
+                record.username = user.username
+            else:
+                record.username = getattr(user, user.USERNAME_FIELD, ' ? ')
         else:
             record.username = '-'
         # Headers
