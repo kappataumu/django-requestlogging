@@ -99,4 +99,5 @@ class RequestFilter(object):
         record.server_protocol = META.get('SERVER_PROTOCOL', '-')
         record.http_user_agent = META.get('HTTP_USER_AGENT', '-')
         record.x_forwarded_for = META.get('HTTP_X_FORWARDED_FOR', '-')
+        record.cf_connecting_ip = META.get('HTTP_CF_CONNECTING_IP', '-')
         return True
